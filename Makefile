@@ -1,4 +1,4 @@
-include libio.mak
+include libstringf.mak
 
 SRCS_OBJS := $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS))
 

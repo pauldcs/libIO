@@ -1,4 +1,4 @@
-NAME		:= libio.a 
+NAME		:= libstringf.a 
 CC			:= gcc
 CFLAGS 		:= -Wall -Wextra -Werror -g3 
 SRCS_DIR	:= srcs
@@ -19,6 +19,5 @@ SRCS :=                \
 	format/__ptr.c     \
 	\
 	utils/writer.c     \
-	utils/init_iob.c   \
 	utils/write_all.c  \
 
