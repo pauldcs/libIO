@@ -6,13 +6,14 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:47 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/30 21:08:41 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/30 21:53:31 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libIO.h"
 #include <stdarg.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 char	*cnstringf(size_t n, const char *fmt, ...)
 {
@@ -25,7 +26,7 @@ char	*cnstringf(size_t n, const char *fmt, ...)
 	iob.cap = n - 1;
 	iob.size = 0;
 	va_start(ap, fmt);
-	vsnstringf(&iob, fmt, &ap);
+	do_formatting(&iob, fmt, &ap);
 	iob.dst[iob.size] = '\0';
 	va_end(ap);
 	return ((char *)iob.dst);

@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:10 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/30 21:08:52 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/30 21:52:58 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include <string.h>
 
-void	vsnstringf(t_iobuf *iob, const char *fmt, va_list *ap)
+void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap)
 {
 	char	*ptr;
 

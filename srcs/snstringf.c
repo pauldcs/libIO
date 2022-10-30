@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:52 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/30 21:08:45 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/30 21:53:17 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ size_t	snstringf(char *str, size_t n, const char *fmt, ...)
 	iob.cap = n - 1;
 	iob.size = 0;
 	va_start(ap, fmt);
-	vsnstringf(&iob, fmt, &ap);
+	do_formatting(&iob, fmt, &ap);
 	iob.dst[iob.size] = '\0';
 	va_end(ap);
-	return (iob.size);
+	return (iob.size + iob.trunc);
 }

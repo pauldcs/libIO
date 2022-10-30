@@ -11,7 +11,7 @@ SRCS :=                \
 	sstringf.c         \
 	snstringf.c        \
 	cnstringf.c        \
-	vsnstringf.c       \
+	do_formatting.c    \
 	\
 	format/__int.c     \
 	format/__str.c     \
