@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/30 20:53:42 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/30 21:07:38 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define BUFFER_SIZE 4096
 
 typedef struct s_iobuf {
-	uint8_t *dst;
+	uint8_t	*dst;
 	size_t	cap;
 	size_t	size;
 	size_t	trunc;

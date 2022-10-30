@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   snstringf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/30 21:07:52 by pducos            #+#    #+#             */
+/*   Updated: 2022/10/30 21:08:45 by pducos           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libIO.h"
 #include <stdarg.h>
-#include <stdio.h>
 #include <stddef.h>
-#include <unistd.h>
 #include <stdint.h>
 
 size_t	snstringf(char *str, size_t n, const char *fmt, ...)

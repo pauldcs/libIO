@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fstringf.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/30 21:07:49 by pducos            #+#    #+#             */
+/*   Updated: 2022/10/30 21:09:02 by pducos           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libIO.h"
 #include <stdarg.h>
-#include <stdio.h>
 #include <stddef.h>
-#include <stdint.h>
 
 size_t	fstringf(int fd, const char *fmt, ...)
 {

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   writer.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/30 21:08:07 by pducos            #+#    #+#             */
+/*   Updated: 2022/10/30 21:09:18 by pducos           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libIO.h"
 #include <stddef.h>
 #include <stdint.h>
 
-void writer(t_iobuf *iob, const uint8_t *src, size_t n)
+void	writer(t_iobuf *iob, const uint8_t *src, size_t n)
 {
 	size_t	ct;
 

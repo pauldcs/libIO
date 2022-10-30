@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sstringf.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/30 21:07:54 by pducos            #+#    #+#             */
+/*   Updated: 2022/10/30 21:08:47 by pducos           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libIO.h"
 #include <stdarg.h>
-#include <stdio.h>
 #include <stddef.h>
-#include <unistd.h>
 #include <stdint.h>
 
 size_t	sstringf(char *str, const char *fmt, ...)
