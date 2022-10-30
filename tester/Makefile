@@ -1,19 +1,11 @@
-CC	:= gcc
-NAME        :=
-INFILE_DIR	:= infiles
-INCS_DIR	:= ../incs
+include tests.mak
 
-SRCS := \
-	stringf_001.c \
-	stringf_002.c \
-
-TESTS := $(patsubst %.c,$(INFILE_DIR)/%.in,$(SRCS))
+TESTS := $(patsubst %.c,$(INFILE_DIR)/%.in,$(TEST_SRCS))
 
 $(INFILE_DIR)/%.in:$(INFILE_DIR)/%.c
-	$(CC) $(CFLAGS) -g3 $< -o $@ -L../ -lstringf -I $(INCS_DIR)
+	$(CC) -g3 $< -o $@ -L../ -lstringf -I $(INCS_DIR)
 
 all: $(TESTS)
-
 
 clean:
 	rm -f $(TESTS)

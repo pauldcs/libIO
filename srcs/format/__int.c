@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:42 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/30 22:06:15 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/30 23:51:15 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,5 @@ void	__int(t_iobuf *iob, const int64_t c)
 	}
 	if (c < 0)
 		nbr[--i] = '-';
-	writer(
-		iob,
-		(uint8_t *)&nbr[i],
-		20 - i);
+	writer(iob, (uint8_t *)&nbr[i], 20 - i);
 }

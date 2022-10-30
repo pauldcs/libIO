@@ -4,7 +4,6 @@
 
 #!/bin/bash
 
-# ./your_program here
 SUFFIX=in
 INFILES=tester/infiles/*.$SUFFIX
 INDIR=tester/infiles

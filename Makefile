@@ -16,7 +16,6 @@ $(NAME): $(SRCS_OBJS)
 test: all
 	@$(MAKE) -C tester/
 	@bash tester/tester.sh
-	@$(MAKE) fclean -C tester/
 
 clean:
 	rm -f $(SRCS_OBJS)
@@ -24,6 +23,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -rf $(OBJS_DIR)
+	@$(MAKE) fclean -C tester/
 
 re: fclean all
 
