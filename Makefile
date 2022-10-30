@@ -13,6 +13,11 @@ all: $(NAME)
 $(NAME): $(SRCS_OBJS)
 	ar rc $(NAME) $(SRCS_OBJS)
 
+test: all
+	@$(MAKE) -C tester/
+	@bash tester/tester.sh
+	@$(MAKE) fclean -C tester/
+
 clean:
 	rm -f $(SRCS_OBJS)
 
