@@ -4,8 +4,8 @@
 
 #!/bin/bash
 
-SUFFIX=test
-INFILES=tester/infiles/*_test
+SUFFIX=_test
+INFILES=tester/infiles/*$SUFFIX
 INDIR=tester/infiles
 OUTDIR=tester/outfiles
 VALGRIND=true
@@ -18,10 +18,11 @@ python3 tester/gen.py
 
 for i in tester/infiles/*.c; do
 	name=$i
-	echo "  - Generating" ${name::-2} "..."
+	printf "Compiling '$(basename ${name::-2})'\n"
     gcc $i -o ${name::-2} -I incs -L. -lstringf 2> /dev/null
 done
 
+echo ""
 echo "Running tests..."
 
 if [[ $(uname) == 'Linux' ]];
@@ -46,7 +47,7 @@ mkdir -vp $OUTDIR > /dev/null
 for infile in $INFILES;
 	do
 		name=$(basename $infile)
-		base=${name%_$SUFFIX}
+		base=${name%$SUFFIX}
 		actual=$OUTDIR/$base.actual
 		log_valg=$OUTDIR/$base.valgrind
 		expected=$OUTDIR/$base.out
@@ -64,7 +65,7 @@ for infile in $INFILES;
 		fi
 		out="_out"
 		./$infile$out &> $expected
-		printf $name
+		printf $name 
 		printf " "
 		python3 -c                                           \
 			"import os;                                      \

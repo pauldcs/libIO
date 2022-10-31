@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:45 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 09:51:42 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 15:01:53 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	__str(t_iobuf *iob, char *s)
 		writer(iob, s, strlen(s));
 	}
 	else
-		writer(iob, "NULL", 4);
+		writer(iob, "(null)", 6);
 }
