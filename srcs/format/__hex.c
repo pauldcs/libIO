@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:39 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 09:56:05 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 21:26:58 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	__hex(t_iobuf *iob, uint32_t n, char *base)
 			tmp >>= 4;
 		}
 	}
-	write_field(iob, 16 - i);
+	field_padder(iob, 16 - i);
 	writer(iob, &bytes[i], 16 - i);
 }

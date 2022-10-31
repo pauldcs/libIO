@@ -6,28 +6,30 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:56 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 17:41:42 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 21:24:05 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstringf.h"
 #include <stdarg.h>
 #include <stddef.h>
+#include <string.h>
+#include <unistd.h>
 
-size_t	stringf(const char *fmt, ...)
+size_t	stringf(const char *format, ...)
 {
-	char	buf[BUFFER_SIZE];
-	va_list	ap;
-	t_iobuf	iob;
+	static char	buf[IOBUF_SIZE];
+	va_list		ap;
+	t_iobuf		iob;
 
-	va_start(ap, fmt);
+	memset(&iob, 0x00, sizeof(t_iobuf));
 	iob.dst = buf;
-	iob.cap = BUFFER_SIZE;
-	iob.size = 0;
-	iob.trunc = 0;
-	iob.fwidth = 0;
-	formatter(&iob, fmt, &ap);
+	iob.cap = IOBUF_SIZE;
+	va_start(ap, format);
+	formatter(&iob, format, &ap);
 	va_end(ap);
-	write_all(1, iob.dst, iob.size);
-	return (iob.size);
+	return (write_all(
+		STDOUT_FILENO,
+		iob.dst,
+		iob.size));
 }

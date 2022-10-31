@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:45 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 15:01:53 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 21:27:26 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	__str(t_iobuf *iob, char *s)
 {
 	if (s)
 	{
-		write_field(iob, strlen(s));
+		field_padder(iob, strlen(s));
 		writer(iob, s, strlen(s));
 	}
 	else

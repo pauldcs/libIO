@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:43 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 09:51:28 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 21:27:20 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	__ptr(t_iobuf *iob, uint64_t *p)
 	}
 	hex[--i] = 'x';
 	hex[--i] = '0';
-	write_field(iob, 18 - i);
+	field_padder(iob, 18 - i);
 	writer(iob, &hex[i], 18 - i);
 }

@@ -5,21 +5,21 @@ SRCS_DIR	:= srcs
 OBJS_DIR	:= .objs
 INCS_DIR	:= incs
 
-SRCS :=                \
-	stringf.c          \
-	fstringf.c         \
-	sstringf.c         \
-	snstringf.c        \
-	cnstringf.c        \
+SRCS :=                   \
+	stringf.c             \
+	fstringf.c            \
+	sstringf.c            \
+	snstringf.c           \
+	cnstringf.c           \
 	\
-	format/__int.c     \
-	format/__str.c     \
-	format/__hex.c     \
-	format/__ptr.c     \
+	format/__int.c        \
+	format/__str.c        \
+	format/__hex.c        \
+	format/__ptr.c        \
 	\
-	utils/writer.c     \
-	utils/write_all.c  \
-	utils/write_field.c  \
-	utils/formatter.c \
-	utils/str_to_uint.c  \
+	utils/writer.c        \
+	utils/write_all.c     \
+	utils/field_padder.c  \
+	utils/formatter.c     \
+	utils/str_to_uint.c   \
 

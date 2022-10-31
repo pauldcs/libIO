@@ -20,6 +20,7 @@ loading()
    printf "\b${sp:sc++:1}"
    ((sc==${#sp})) && sc=0
 }
+
 loading_done()
 {
    printf "\b\033[0;32mDone\033[0m\n"
