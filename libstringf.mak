@@ -20,4 +20,5 @@ SRCS :=                \
 	utils/writer.c     \
 	utils/write_all.c  \
 	utils/do_formatting.c \
+	utils/str_to_uint.c  \
 

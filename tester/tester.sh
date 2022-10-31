@@ -15,7 +15,7 @@ KO="\033[1;31mKO\033[0m\n"
 
 if [[ $(uname) == 'Linux' ]];
 	then
-		DIFF_FLAGS="--color -Tp"
+		DIFF_FLAGS="--color -p"
 		if ! command -v valgrind > /dev/null;
 			then
 				>&2 echo "Notice: Consider installing valgrind"
@@ -23,7 +23,7 @@ if [[ $(uname) == 'Linux' ]];
 		fi
 	else
 		VALGRIND=false
-		DIFF_FLAGS="-Tp"
+		DIFF_FLAGS="-p"
 fi
 
 if [ "$VALGRIND" == false ];

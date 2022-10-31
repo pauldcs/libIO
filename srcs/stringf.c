@@ -6,14 +6,13 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:56 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 08:49:20 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 09:58:37 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstringf.h"
 #include <stdarg.h>
 #include <stddef.h>
-#include <string.h>
 
 size_t	stringf(const char *fmt, ...)
 {
@@ -26,6 +25,7 @@ size_t	stringf(const char *fmt, ...)
 	iob.cap = BUFFER_SIZE;
 	iob.size = 0;
 	iob.trunc = 0;
+	iob.fwidth = 0;
 	do_formatting(&iob, fmt, &ap);
 	va_end(ap);
 	write_all(1, iob.dst, iob.size);

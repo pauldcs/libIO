@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:54 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 01:47:18 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 09:58:25 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ size_t	sstringf(char *str, const char *fmt, ...)
 	iob.dst = str;
 	iob.cap = BUFFER_SIZE - 1;
 	iob.size = 0;
+	iob.fwidth = 0;
 	va_start(ap, fmt);
 	do_formatting(&iob, fmt, &ap);
 	iob.dst[iob.size] = '\0';

@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   __hex.c                                            :+:      :+:    :+:   */
+/*   str_to_uint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 21:07:39 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 09:56:05 by pducos           ###   ########.fr       */
+/*   Created: 2022/10/31 09:33:24 by pducos            #+#    #+#             */
+/*   Updated: 2022/10/31 09:34:10 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstringf.h"
-#include <stdint.h>
-#include <stddef.h>
+#include <limits.h>
 
-void	__hex(t_iobuf *iob, uint32_t n, char *base)
+char	*str_to_uint(char *str, int *result)
 {
-	uint64_t	tmp;
-	char		bytes[16];
-	int			i;
+	long	i;
 
-	i = 16;
-	if (n == 0)
-		bytes[--i] = '0';
-	else
+	i = 0;
+	while (*str >= '0' && *str <= '9')
 	{
-		tmp = n;
-		while (i && tmp)
-		{
-			bytes[--i] = base[tmp & 0xf];
-			tmp >>= 4;
-		}
+		i *= 10;
+		i += *(str++) & 0xCF;
+		if (i > INT_MAX)
+			return (0);
 	}
-	write_field(iob, 16 - i);
-	writer(iob, &bytes[i], 16 - i);
+	*result = i;
+	return (str);
 }

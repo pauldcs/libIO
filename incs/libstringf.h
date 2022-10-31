@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 08:59:18 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 09:56:14 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define BUFFER_SIZE 4096
 
 typedef struct s_iobuf {
+	int		fwidth;
 	char	*dst;
 	size_t	cap;
 	size_t	size;
@@ -28,7 +29,7 @@ typedef struct s_iobuf {
 
 void	__int(t_iobuf *iob, int32_t c);
 void	__str(t_iobuf *iob, char *s);
-void	__hex(t_iobuf *iob, uint64_t n, char *base);
+void	__hex(t_iobuf *iob, uint32_t n, char *base);
 void	__ptr(t_iobuf *iob, uint64_t *p);
 
 void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap);
@@ -44,7 +45,9 @@ void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap);
  * @param n the size of src
  */
 void	writer(t_iobuf *iob, const char *src, size_t n);
+void	write_field(t_iobuf *iob, size_t n);
 size_t	write_all(int fd, const void *buf, size_t s);
+char	*str_to_uint(char *str, int *result);
 
 /**
  * @brief write output to stdout.

@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:42 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 08:59:21 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 09:51:21 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	__int(t_iobuf *iob, int32_t c)
 	}
 	if (c < 0)
 		nbr[--i] = '-';
+	write_field(iob, 20 - i);
 	writer(iob, &nbr[i], 20 - i);
 }
