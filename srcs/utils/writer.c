@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:07 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/30 22:06:22 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 01:47:52 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-void	writer(t_iobuf *iob, const uint8_t *src, size_t n)
+void	writer(t_iobuf *iob, const char *src, size_t n)
 {
 	size_t	ct;
 

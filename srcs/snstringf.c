@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:52 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/30 22:03:13 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 01:47:14 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	snstringf(char *str, size_t n, const char *fmt, ...)
 	va_list	ap;
 	t_iobuf	iob;
 
-	iob.dst = (uint8_t *)str;
+	iob.dst = str;
 	iob.cap = n - 1;
 	iob.size = 0;
 	va_start(ap, fmt);

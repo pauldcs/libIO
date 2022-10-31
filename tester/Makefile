@@ -3,7 +3,7 @@ include tests.mak
 TESTS := $(patsubst %.c,$(INFILE_DIR)/%.in,$(TEST_SRCS))
 
 $(INFILE_DIR)/%.in:$(INFILE_DIR)/%.c
-	$(CC) -g3 $< -o $@ -L../ -lstringf -I $(INCS_DIR)
+	$(CC) -g3 $< -o $@ -I $(INCS_DIR) -L../ -lstringf
 
 all: $(TESTS)
 

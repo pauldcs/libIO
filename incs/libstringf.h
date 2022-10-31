@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 00:34:11 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 01:48:39 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define BUFFER_SIZE 4096
 
 typedef struct s_iobuf {
-	uint8_t	*dst;
+	char	*dst;
 	size_t	cap;
 	size_t	size;
 	size_t	trunc;
@@ -28,7 +28,7 @@ typedef struct s_iobuf {
 
 void	__int(t_iobuf *iob, int64_t c);
 void	__str(t_iobuf *iob, char *s);
-void	__hex(t_iobuf *iob, uint64_t n);
+void	__hex(t_iobuf *iob, uint64_t n, char *base);
 void	__ptr(t_iobuf *iob, uint64_t *p);
 
 void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap);
@@ -43,7 +43,7 @@ void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap);
  * @param src the source to copy
  * @param n the size of src
  */
-void	writer(t_iobuf *iob, const uint8_t *src, size_t n);
+void	writer(t_iobuf *iob, const char *src, size_t n);
 size_t	write_all(int fd, const void *buf, size_t s);
 
 /**

@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:45 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 00:33:51 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 01:47:34 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	__str(t_iobuf *iob, char *s)
 {
 	if (s)
-		writer(iob, (uint8_t *)s, strlen(s));
+		writer(iob, s, strlen(s));
 	else
-		writer(iob, (uint8_t *)"NULL", 4);
+		writer(iob, "NULL", 4);
 }

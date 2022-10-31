@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:39 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 00:33:40 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 01:48:29 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <stdint.h>
 #include <stddef.h>
 
-void	__hex(t_iobuf *iob, uint64_t n)
+void	__hex(t_iobuf *iob, uint64_t n, char *base)
 {
-	uint64_t		tmp;
-	unsigned char	bytes[16];
-	int				i;
+	uint64_t	tmp;
+	char		bytes[16] = {0};
+	int			i;
 
 	i = 16;
 	if (n == 0)
@@ -28,9 +28,9 @@ void	__hex(t_iobuf *iob, uint64_t n)
 		tmp = n;
 		while (i && tmp)
 		{
-			bytes[--i] = "0123456789abcdef"[tmp & 0xf];
+			bytes[--i] = base[tmp & 0xf];
 			tmp >>= 4;
 		}
 	}
-	writer(iob, (uint8_t *)&bytes[i], 16 - i);
+	writer(iob, &bytes[i], 16 - i);
 }

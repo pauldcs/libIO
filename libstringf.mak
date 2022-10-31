@@ -1,6 +1,6 @@
 NAME		:= libstringf.a 
 CC			:= gcc
-CFLAGS 		:= -Wall -Wextra -Werror -g3 
+CFLAGS 		:= -Wall -Wextra -Werror -g3
 SRCS_DIR	:= srcs
 OBJS_DIR	:= .objs
 INCS_DIR	:= incs
