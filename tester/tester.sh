@@ -4,8 +4,9 @@
 
 #!/bin/bash
 
+# ./your_program here
 SUFFIX=in
-INFILES=tester/infiles/*.$SUFFIX
+INFILES=tester/infiles/*_in
 INDIR=tester/infiles
 OUTDIR=tester/outfiles
 VALGRIND=true
@@ -15,7 +16,7 @@ KO="\033[1;31mKO\033[0m\n"
 
 if [[ $(uname) == 'Linux' ]];
 	then
-		DIFF_FLAGS="--color -p"
+		DIFF_FLAGS="--color -Tp"
 		if ! command -v valgrind > /dev/null;
 			then
 				>&2 echo "Notice: Consider installing valgrind"
@@ -23,7 +24,7 @@ if [[ $(uname) == 'Linux' ]];
 		fi
 	else
 		VALGRIND=false
-		DIFF_FLAGS="-p"
+		DIFF_FLAGS="-Tp"
 fi
 
 if [ "$VALGRIND" == false ];
@@ -35,10 +36,10 @@ mkdir -vp $OUTDIR > /dev/null
 for infile in $INFILES;
 	do
 		name=$(basename $infile)
-		base=${name%.$SUFFIX}
+		base=${name%_$SUFFIX}
 		actual=$OUTDIR/$base.actual
 		log_valg=$OUTDIR/$base.valgrind
-		expected=$INDIR/$base.out
+		expected=$OUTDIR/$base.out
 		if [ "$VALGRIND" == true ];
 			then
 				valgrind                     \
@@ -51,6 +52,8 @@ for infile in $INFILES;
 			else
 				./$infile &> $actual
 		fi
+		out="_out"
+		./$infile$out &> $expected
 		printf $name
 		printf " "
 		python3 -c                                           \
@@ -68,7 +71,7 @@ for infile in $INFILES;
 		fi
 		if [ -s $log_valg ];
 			then
-				printf "\n\033[1;31mMEMORY ERROR\033[0m\n"
+				printf "\033[1;31mMEMORY ERROR\033[0m\n"
 				cat $log_valg
 		fi
 done

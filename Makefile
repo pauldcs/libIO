@@ -14,7 +14,8 @@ $(NAME): $(SRCS_OBJS)
 	ar rc $(NAME) $(SRCS_OBJS)
 
 test: all
-	@$(MAKE) -C tester/
+	@rm -rf tester/infiles/*
+	@bash tester/build.sh
 	@bash tester/tester.sh
 
 clean:
@@ -23,7 +24,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -rf $(OBJS_DIR)
-	@$(MAKE) fclean -C tester/
+	rm -rf tester/infiles/*
 
 re: fclean all
 
