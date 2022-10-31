@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_formatting.c                                    :+:      :+:    :+:   */
+/*   formatter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:10 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 10:07:56 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:41:24 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*absorbe_width(t_iobuf *iob, char *str)
 	return (str);
 }
 
-void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap)
+void	formatter(t_iobuf *iob, const char *fmt, va_list *ap)
 {
 	char	*ptr;
 

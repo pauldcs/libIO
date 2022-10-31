@@ -13,17 +13,17 @@ VALGRIND=true
 OK="\033[0;32mOK\033[0m\n"
 KO="\033[1;31mKO\033[0m\n"
 
-mkdir -vp tester/infiles
-python3 tester/gen.py
-
-for i in tester/infiles/*.c; do
-	name=$i
-	printf "Compiling '$(basename ${name::-2})'\n"
-    gcc $i -o ${name::-2} -I incs -L. -lstringf 2> /dev/null
-done
-
-echo ""
-echo "Running tests..."
+sp="/-\|"
+sc=0
+loading()
+{
+   printf "\b${sp:sc++:1}"
+   ((sc==${#sp})) && sc=0
+}
+loading_done()
+{
+   printf "\b\033[0;32mDone\033[0m\n"
+}
 
 if [[ $(uname) == 'Linux' ]];
 	then
@@ -42,6 +42,20 @@ if [ "$VALGRIND" == false ];
 	then
 		>&2 echo "Notice: valgrind not enabled"
 fi
+
+mkdir -vp tester/infiles
+python3 tester/gen.py
+
+printf "Compiling tester infiles ...  "
+for i in tester/infiles/*.c; do
+	name=$i
+	loading
+    gcc $name -o ${name::-2} -I incs -L. -lstringf 2> /dev/null
+done
+
+loading_done
+echo "Running tests..."
+echo ""
 
 mkdir -vp $OUTDIR > /dev/null
 for infile in $INFILES;

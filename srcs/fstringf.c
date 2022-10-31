@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:49 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 09:58:14 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:41:32 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	fstringf(int fd, const char *fmt, ...)
 	iob.size = 0;
 	iob.trunc = 0;
 	iob.fwidth = 0;
-	do_formatting(&iob, fmt, &ap);
+	formatter(&iob, fmt, &ap);
 	write_all(fd, iob.dst, iob.size);
 	va_end(ap);
 	return (iob.size);

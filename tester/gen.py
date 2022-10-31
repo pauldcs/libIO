@@ -38,35 +38,35 @@ test_list = [
 
 #stringf
 for test in test_list:
-	test_name = "tester/infiles/stringf_"    \
-			+ str(test_list.index(test)).zfill(3) \
+	test_name = "tester/infiles/" + "stringf" + "_" \
+			+ str(test_list.index(test)).zfill(3)   \
 			+ "_test.c"
 	with open(test_name, 'w') as f:
 		f.write(
-		"""
-			#include "libstringf.h"
-			#include <limits.h>
-			#include <stdlib.h>
-			int main(void)
-			{
-				stringf("""+test+""");
-				return (0);
-			}
-		""")
+"""
+#include "libstringf.h"
+#include <limits.h>
+#include <stdlib.h>
+int main(void)
+{
+	stringf("""+test+""");
+	return (0);
+}
+""")
 
 for test in test_list:
-	test_name = "tester/infiles/stringf_"    \
-			+ str(test_list.index(test)).zfill(3) \
+	test_name = "tester/infiles/" + "stringf" + "_" \
+			+ str(test_list.index(test)).zfill(3)   \
 			+ "_test_out.c"
 	with open(test_name, 'w') as f:
 		f.write(
-		"""
-			#include <stdio.h>
-			#include <limits.h>
-			#include <stdlib.h>
-			int main(void)
-			{
-				printf("""+test+""");
-				return (0);
-			}
-		""")
+"""
+#include <stdio.h>
+#include <limits.h>
+#include <stdlib.h>
+int main(void)
+{
+	printf("""+test+""");
+	return (0);
+}
+""")

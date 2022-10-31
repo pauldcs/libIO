@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 09:56:14 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:41:29 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	__str(t_iobuf *iob, char *s);
 void	__hex(t_iobuf *iob, uint32_t n, char *base);
 void	__ptr(t_iobuf *iob, uint64_t *p);
 
-void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap);
+void	formatter(t_iobuf *iob, const char *fmt, va_list *ap);
 
 /**
  * @brief tries to write 'n' bytes into iob->dst.
