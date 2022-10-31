@@ -14,8 +14,7 @@ $(NAME): $(SRCS_OBJS)
 	ar rc $(NAME) $(SRCS_OBJS)
 
 test: all
-	@rm -rf tester/infiles/*
-	@bash tester/build.sh
+	@rm -rf tester/infiles
 	@bash tester/tester.sh
 
 clean:
@@ -24,7 +23,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -rf $(OBJS_DIR)
-	rm -rf tester/infiles/*
+	rm -rf tester/infiles
 
 re: fclean all
 

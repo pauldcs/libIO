@@ -4,15 +4,25 @@
 
 #!/bin/bash
 
-# ./your_program here
-SUFFIX=in
-INFILES=tester/infiles/*_in
+SUFFIX=test
+INFILES=tester/infiles/*_test
 INDIR=tester/infiles
 OUTDIR=tester/outfiles
 VALGRIND=true
 
 OK="\033[0;32mOK\033[0m\n"
 KO="\033[1;31mKO\033[0m\n"
+
+mkdir -vp tester/infiles
+python3 tester/generator.py
+
+for i in tester/infiles/*.c; do
+	name=$i
+	echo "  - Generating" ${name::-2} "..."
+    gcc $i -o ${name::-2} -I incs -L. -lstringf 2> /dev/null
+done
+
+echo "Running tests..."
 
 if [[ $(uname) == 'Linux' ]];
 	then
