@@ -68,7 +68,7 @@ for infile in $INFILES;
 		fi
 		if [ -s $log_valg ];
 			then
-				printf "\033[1;31mMEMORY ERROR\033[0m\n"
+				printf "\n\033[1;31mMEMORY ERROR\033[0m\n"
 				cat $log_valg
 		fi
 done

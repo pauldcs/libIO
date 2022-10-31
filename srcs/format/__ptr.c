@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:43 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/30 23:51:24 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 00:33:48 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <stdint.h>
 #include <stddef.h>
 
-void	__ptr(t_iobuf *iob, const uint64_t *p)
+void	__ptr(t_iobuf *iob, uint64_t *p)
 {
 	uint64_t		ptr;
-	static char		hex[18];
+	unsigned char	hex[18];
 	int				i;
 
 	i = 18;

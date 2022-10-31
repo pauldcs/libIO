@@ -6,12 +6,11 @@ OBJS_DIR	:= .objs
 INCS_DIR	:= incs
 
 SRCS :=                \
-	fstringf.c         \
 	stringf.c          \
+	fstringf.c         \
 	sstringf.c         \
 	snstringf.c        \
 	cnstringf.c        \
-	do_formatting.c    \
 	\
 	format/__int.c     \
 	format/__str.c     \
@@ -20,4 +19,5 @@ SRCS :=                \
 	\
 	utils/writer.c     \
 	utils/write_all.c  \
+	utils/do_formatting.c \
 
