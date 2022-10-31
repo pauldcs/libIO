@@ -14,7 +14,7 @@ OK="\033[0;32mOK\033[0m\n"
 KO="\033[1;31mKO\033[0m\n"
 
 mkdir -vp tester/infiles
-python3 tester/generator.py
+python3 tester/gen.py
 
 for i in tester/infiles/*.c; do
 	name=$i

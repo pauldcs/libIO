@@ -14,7 +14,6 @@ $(NAME): $(SRCS_OBJS)
 	ar rc $(NAME) $(SRCS_OBJS)
 
 test: all
-	@rm -rf tester/infiles
 	@bash tester/tester.sh
 
 clean:

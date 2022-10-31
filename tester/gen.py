@@ -13,7 +13,7 @@ tests = \
 	'"%d %d",                -2147483648, 2147483647',
 	'"%s%d%s%x%s%d",         "", 1, " ", 1, "", 1',
 	'"%5d%5x%s",             5,5," "',
-	'"%dd%dd%xx%xx",         5,5,5,5'
+	'"%dd%dd%xx%xx",         5,5,5,5',
 ]
 
 #stringf
@@ -26,7 +26,6 @@ for test in tests:
 	print("    stringf("+test+"); ")
 	print("}                      ")
 	i += 1
-
 i = 0
 for test in tests:
 	name = "tester/infiles/stringf_" + str(i).zfill(3) + "_test_out.c"
@@ -38,27 +37,30 @@ for test in tests:
 	print('}                    ')
 	i += 1
 
+
 #fstringf
 i = 0
 for test in tests:
 	name = "tester/infiles/fstringf_" + str(i).zfill(3) + "_test.c"
 	sys.stdout = open(name, "a")
+
 	print('#include "libstringf.h"   ')
 	print('int main(void){           ')
 	print("    fstringf(1, "+test+");")
 	print("}                         ")
 	i += 1
-
 i = 0
 for test in tests:
 	name = "tester/infiles/fstringf_" + str(i).zfill(3) + "_test_out.c"
 	sys.stdout = open(name, "a")
-	print('#include <stdio.h>   ')
-	print('int main(void){      ')
+
+	print('#include <stdio.h>            ')
+	print('int main(void){               ')
 	print('    fprintf(stdout, '+test+');')
-	print('    return(0);       ')
-	print('}                    ')
+	print('    return(0);                ')
+	print('}                             ')
 	i += 1
+
 
 #sstringf
 i = 0
@@ -73,7 +75,6 @@ for test in tests:
 	print('    printf("%s", buf);      ')
 	print("}                           ")
 	i += 1
-
 i = 0
 for test in tests:
 	name = "tester/infiles/sstringf_" + str(i).zfill(3) + "_test_out.c"
