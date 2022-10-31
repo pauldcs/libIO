@@ -6,17 +6,18 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:49 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 01:47:05 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 08:51:02 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstringf.h"
 #include <stdarg.h>
 #include <stddef.h>
+#include <string.h>
 
 size_t	fstringf(int fd, const char *fmt, ...)
 {
-	char	buf[BUFFER_SIZE] = {0};
+	char	buf[BUFFER_SIZE];
 	va_list	ap;
 	t_iobuf	iob;
 

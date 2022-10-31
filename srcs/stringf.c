@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:56 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 01:46:27 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 08:49:20 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 size_t	stringf(const char *fmt, ...)
 {
-	char	buf[BUFFER_SIZE] = {0};
+	char	buf[BUFFER_SIZE];
 	va_list	ap;
 	t_iobuf	iob;
 

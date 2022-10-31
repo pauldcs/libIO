@@ -6,13 +6,14 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:10 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 01:50:28 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 08:59:23 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstringf.h"
 #include <stdarg.h>
 #include <string.h>
+#include <stdio.h>
 
 void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap)
 {
@@ -26,7 +27,7 @@ void	do_formatting(t_iobuf *iob, const char *fmt, va_list *ap)
 		if (*ptr && ptr++)
 		{
 			if (*ptr == 'd' && ptr++)
-				__int(iob, va_arg(*ap, int64_t));
+				__int(iob, va_arg(*ap, int32_t));
 			else if (*ptr == 's' && ptr++)
 				__str(iob, va_arg(*ap, char *));
 			else if (*ptr == 'x' && ptr++)

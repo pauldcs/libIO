@@ -6,17 +6,17 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:42 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 01:45:37 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 08:59:21 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstringf.h"
 #include <stddef.h>
 
-void	__int(t_iobuf *iob, int64_t c)
+void	__int(t_iobuf *iob, int32_t c)
 {
-	char		nbr[20] = {0};
-	uint64_t	n;
+	char		nbr[20];
+	uint32_t	n;
 	int			i;
 
 	if (c < 0)

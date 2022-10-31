@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 01:48:39 by pducos           ###   ########.fr       */
+/*   Updated: 2022/10/31 08:59:18 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_iobuf {
 	size_t	trunc;
 }	t_iobuf;
 
-void	__int(t_iobuf *iob, int64_t c);
+void	__int(t_iobuf *iob, int32_t c);
 void	__str(t_iobuf *iob, char *s);
 void	__hex(t_iobuf *iob, uint64_t n, char *base);
 void	__ptr(t_iobuf *iob, uint64_t *p);
