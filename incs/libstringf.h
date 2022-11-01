@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 21:25:05 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/01 23:55:25 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,90 +19,56 @@
 
 # define IOBUF_SIZE 4096
 
+/*
+const char *color_code_list[] = {
+	NULL,
+	"\e[0;30m", // black
+	"\e[0;31m", // red
+	"\e[0;32m", // green
+	"\e[0;33m", // yellow
+	"\e[0;34m", // blue
+	"\e[0;35m", // magenta
+	"\e[0;36m", // cyan
+	"\e[0;37m"  // white
+};*/
+
+typedef enum e_color
+{
+	NONE,
+	BLACK,
+	RED,
+	GREEN,
+	YELLOW,
+	BLUE,
+	MAGENTA,
+	CYAN,
+	WHITE
+}	t_color;
+
 typedef struct s_iobuf {
-	int		fwidth;
-	char	*dst;
+	void	*data;
 	size_t	cap;
-	size_t	size;
-	size_t	trunc;
+	size_t	len;
+	size_t	disc;
+	size_t	width;
 }	t_iobuf;
 
 void	__int(t_iobuf *iob, int32_t c);
 void	__str(t_iobuf *iob, char *s);
-void	__hex(t_iobuf *iob, uint32_t n, char *base);
+void	__hex(t_iobuf *iob, uint32_t n);
 void	__ptr(t_iobuf *iob, uint64_t *p);
 
-void	formatter(t_iobuf *iob, const char *format, va_list *ap);
+void	iob_format_str(t_iobuf *iob, const char *format, va_list *ap);
 
-/**
- * @brief tries to write 'n' bytes into iob->dst.
- * If iob->size have reached iob->cap, iob->trunc will be incremented by the
- * number of bytes truncated. The number of bytes actually written
- * into iob->dst is stored in iob->size. The buffer is not null terminated.
- * 
- * @param iob pointer to the iobuf structure
- * @param src the source to copy
- * @param n the size of src
- */
-void	writer(t_iobuf *iob, const char *src, size_t n);
-void	field_padder(t_iobuf *iob, size_t n);
+void	iob_write(t_iobuf *iob, const char *src, size_t n);
+void	field_pad(t_iobuf *iob, size_t size);
 size_t	write_all(int fd, const void *buf, size_t s);
 char	*str_to_uint(char *str, int *result);
 
-/**
- * @brief write output to stdout.
- * 
- * @param format The format string
- * @param ... arguments
- * @return The number of bytes written 
- */
 size_t	stringf(const char *format, ...);
-
-/**
- * @brief write output to file descriptor 'fd'.
- * 
- * @param fd - File descriptor to write to
- * @param format - The format string
- * @param ... - arguments
- * @return The number of bytes written
- */
 size_t	fstringf(int fd, const char *format, ...);
-
-/**
- * @brief write output to string 'str'.
- * 
- * @param str The string to write to
- * @param format The format string
- * @param ... Arguments
- * @return The number of bytes written 
- */
 size_t	sstringf(char *str, const char *format, ...);
-
-/**
- * @brief write at most 'n' bytes to str.
- * if the return value is greater than or equal to the size argument,
- * the string was too short and some of the printed characters
- * were discarded.  The output is always null-terminated,
- * unless size is 0. 'str' is threated as its capacity was equal to BUFIO_SIZE
- * 
- * @param str The string to write to
- * @param n The maximum number of characters to write (including null bytes)
- * @param format The format string
- * @param ... Arguments
- * @return The numbers of bytes written + the number of bytes truncated
- */
 size_t	snstringf(char *str, size_t n, const char *format, ...);
-
-/**
- * @brief Allocates 'n' bytes and formats the maximum
- * amount of characters. Always null terminated unless 'n' is 0.
- * The returned pointer must be freed.
- *	
- * @param n Maximum size of the allocation
- * @param format The format string
- * @param ... Arguments
- * @return The allocated string
- */
-char	*cnstringf(size_t n, const char *format, ...);
+size_t	cnstringf(char **ptr, const char *format, ...);
 
 #endif

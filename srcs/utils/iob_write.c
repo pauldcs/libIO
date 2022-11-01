@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   writer.c                                           :+:      :+:    :+:   */
+/*   iob_write.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:07 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 10:02:22 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/01 18:13:06 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 #include <stddef.h>
 #include <stdint.h>
 
-void	writer(t_iobuf *iob, const char *src, size_t n)
+void	iob_write(t_iobuf *iob, const char *src, size_t n)
 {
-	size_t	ct;
+	size_t	i;
 
-	ct = 0;
-	while (ct + iob->size < iob->cap && ct < n)
+	i = 0;
+	while (n && iob->len + i < iob->cap)
 	{
-		iob->dst[iob->size + ct] = src[ct];
-		ct++;
+		*(unsigned char *)(iob->data + iob->len + i) = src[i];
+		i++;
+		n--;
 	}
-	iob->size += ct;
-	iob->trunc += n - ct;
+	iob->len += i;
+	iob->disc += n;
 }

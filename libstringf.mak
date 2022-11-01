@@ -5,6 +5,8 @@ SRCS_DIR	:= srcs
 OBJS_DIR	:= .objs
 INCS_DIR	:= incs
 
+IOBUF_SIZE  := 1024
+
 SRCS :=                   \
 	stringf.c             \
 	fstringf.c            \
@@ -17,9 +19,9 @@ SRCS :=                   \
 	format/__hex.c        \
 	format/__ptr.c        \
 	\
-	utils/writer.c        \
-	utils/write_all.c     \
-	utils/field_padder.c  \
-	utils/formatter.c     \
-	utils/str_to_uint.c   \
+	utils/iob_write.c      \
+	utils/field_pad.c      \
+	utils/write_all.c      \
+	utils/iob_format_str.c \
+	utils/str_to_uint.c    \
 

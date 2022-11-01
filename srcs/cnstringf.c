@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:47 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 21:26:44 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/01 23:48:52 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-char	*cnstringf(size_t n, const char *format, ...)
+size_t	cnstringf(char **ptr, const char *format, ...)
 {
+	static char	buf[IOBUF_SIZE];
 	va_list	ap;
 	t_iobuf	iob;
 
 	memset(&iob, 0x00, sizeof(t_iobuf));
-	iob.cap = n;
-	iob.dst = malloc(n + 1);
-	if (!iob.dst)
-		return (NULL);
+	iob.data = buf;
+	iob.cap = IOBUF_SIZE - 1;
 	va_start(ap, format);
-	formatter(&iob, format, &ap);
+	iob_format_str(&iob, format, &ap);
 	va_end(ap);
-	*(iob.dst + iob.size) = 0x00;
-	return (iob.dst);
+	*ptr = malloc(iob.len + 1);
+	if (*ptr)
+	{
+		memcpy(*ptr, iob.data, iob.len);
+		(*ptr)[iob.len] = '\0';
+	}
+	return (iob.len);
 }

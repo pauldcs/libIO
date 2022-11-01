@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:42 by pducos            #+#    #+#             */
-/*   Updated: 2022/10/31 21:27:01 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/01 23:21:22 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	__int(t_iobuf *iob, int32_t c)
 {
 	char		nbr[20];
 	uint32_t	n;
-	int			i;
+	size_t		i;
 
 	if (c < 0)
 		n = c * -1;
@@ -33,6 +33,6 @@ void	__int(t_iobuf *iob, int32_t c)
 	}
 	if (c < 0)
 		nbr[--i] = '-';
-	field_padder(iob, 20 - i);
-	writer(iob, &nbr[i], 20 - i);
+	field_pad(iob, 20 - i);
+	iob_write(iob, &nbr[i], 20 - i);
 }
