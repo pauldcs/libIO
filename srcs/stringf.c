@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:56 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/01 18:12:07 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 00:07:46 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	stringf(const char *format, ...)
 
 	memset(&iob, '\0', sizeof(t_iobuf));
 	iob.data = buf;
-	iob.cap = IOBUF_SIZE;
+	iob.cap = sizeof(buf);
 	va_start(ap, format);
 	iob_format_str(&iob, format, &ap);
 	va_end(ap);

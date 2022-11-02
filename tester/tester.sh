@@ -77,7 +77,7 @@ for infile in $INFILES;
 			"import os;                                      \
 			 name_len = len('$name');                        \
 			 term_len = $(/usr/bin/tput cols);               \
-			 print(('.' * (term_len - name_len - 8)), end='')"
+			 print(('.' * (term_len - name_len - 9)), end='')"
 		printf " "
 		if (cmp -s $actual $expected)
 			then

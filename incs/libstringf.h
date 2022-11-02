@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/01 23:55:25 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 00:56:56 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,20 @@
 # include <stddef.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <stdbool.h>
 
 # define IOBUF_SIZE 4096
-
-/*
-const char *color_code_list[] = {
-	NULL,
-	"\e[0;30m", // black
-	"\e[0;31m", // red
-	"\e[0;32m", // green
-	"\e[0;33m", // yellow
-	"\e[0;34m", // blue
-	"\e[0;35m", // magenta
-	"\e[0;36m", // cyan
-	"\e[0;37m"  // white
-};*/
-
-typedef enum e_color
-{
-	NONE,
-	BLACK,
-	RED,
-	GREEN,
-	YELLOW,
-	BLUE,
-	MAGENTA,
-	CYAN,
-	WHITE
-}	t_color;
 
 typedef struct s_iobuf {
 	void	*data;
 	size_t	cap;
 	size_t	len;
 	size_t	disc;
-	size_t	width;
+	struct	s_field
+	{
+		size_t	width;
+		bool	color;
+	}	field;
 }	t_iobuf;
 
 void	__int(t_iobuf *iob, int32_t c);
