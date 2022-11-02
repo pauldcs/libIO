@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:54 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 12:45:50 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 13:37:31 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ size_t	scpyf(char *str, const char *format, ...)
 	iob_format_str(&iob, format, &ap);
 	va_end(ap);
 	*(char *)(iob.data + iob.len) = '\0';
-	return (iob.len);
+	return (iob.len + iob.disc);
 }

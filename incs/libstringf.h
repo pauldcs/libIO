@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 13:30:38 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 13:41:17 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ size_t	fputstr(int fd, const char *format, ...);
  * The result will be truncated if the format string is larger than
  * IOBUF_MAX or 'n'. the result is not null terminated.
  * @param dst The destination buffer
- * @param n Number of bytes to copy
+ * @param dstsize size of 'dst'
  * @param format The format string
  * @param ... 
- * @return number of bytes copied + number of bytes truncated
+ * @return number of bytes written
  */
-size_t	cpyf(void *dst, size_t n, const char *format, ...);
+size_t	cpyf(void *dst, size_t dstsize, const char *format, ...);
 
 /**
  * @brief copies the 'format' into 'str'.
@@ -59,11 +59,21 @@ size_t	cpyf(void *dst, size_t n, const char *format, ...);
  * @param str The destination string
  * @param format The format string
  * @param ... 
- * @return number of bytes copied + number of bytes truncated
+ * @return number of bytes written
  */
 size_t	scpyf(char *str, const char *format, ...);
 
-size_t	slcpyf(char *str, size_t dstsize, const char *format, ...);
+/**
+ * @brief This function behaves as strlcpy, the src being the format
+ * string.
+ * 
+ * @param dst the destination buffer
+ * @param dstsize the size of 'dst'
+ * @param format the format string
+ * @param ... 
+ * @return same as strlcpy
+ */
+size_t	slcpyf(char *dst, size_t dstsize, const char *format, ...);
 
 /**
  * @brief copies the format string into a new allocated buffer placed into 'dst'.

@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:52 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 13:27:12 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 13:33:37 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include <stddef.h>
 #include <stdint.h>
 
-size_t	slcpyf(char *str, size_t dstsize, const char *format, ...)
+size_t	slcpyf(char *dst, size_t dstsize, const char *format, ...)
 {
 	va_list	ap;
 	t_iobuf	iob;
 
 	mem_set(&iob, '\0', sizeof(t_iobuf));
-	iob.data = str;
+	iob.data = dst;
 	iob.cap = dstsize;
 	va_start(ap, format);
 	iob_format_str(&iob, format, &ap);

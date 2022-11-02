@@ -116,7 +116,7 @@ int main(void)
 	char buf[100];
 	int ret = scpyf(buf, """+test[0]+""");
 	fputstr(1, "%s(%d)", buf, ret);
-return (0);
+	return (0);
 }
 """)
 	outfile_name = "tester/infiles/scpyf_" \
@@ -125,7 +125,32 @@ return (0);
 	with open(outfile_name, 'w') as outfile:
 		outfile.write(test[1])
 
-#astringf
+#cpyf
+for test in test_list:
+	infile_name = "tester/infiles/cpyf_"  \
+		+ str(test_list.index(test)).zfill(3) \
+		+ "_test.c"
+	with open(infile_name, 'w') as infile:
+		infile.write("""
+#include "libstringf.h"
+#include <limits.h>
+#include <unistd.h>
+int main(void)
+{
+	char buf[100];
+	int ret = cpyf(buf, 100, """+test[0]+""");
+	write(1, buf, ret);
+	fputstr(1, "(%d)", ret);
+	return (0);
+}
+""")
+	outfile_name = "tester/infiles/cpyf_" \
+		+ str(test_list.index(test)).zfill(3) \
+		+ "_test.out"
+	with open(outfile_name, 'w') as outfile:
+		outfile.write(test[1])
+
+#ssavef
 for test in test_list:
 	infile_name = "tester/infiles/ssavef_"      \
 			+ str(test_list.index(test)).zfill(3) \

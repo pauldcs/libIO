@@ -8,6 +8,7 @@ INCS_DIR	:= incs
 IOBUF_MAX  := 1024
 
 SRCS :=                   \
+	cpyf.c                \
 	putstr.c              \
 	fputstr.c             \
 	scpyf.c               \

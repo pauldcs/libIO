@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   astringf.c                                         :+:      :+:    :+:   */
+/*   ssavef.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:47 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 11:07:10 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 13:37:05 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ ssize_t	ssavef(char **dst, const char *format, ...)
 	{
 		mem_copy(*dst, iob.data, iob.len);
 		(*dst)[iob.len] = '\0';
-		return (iob.len);
+		return (iob.len + iob.disc);
 	}
 	return (-1);
 }
