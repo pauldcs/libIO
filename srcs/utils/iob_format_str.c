@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:10 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 01:07:37 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 01:19:22 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,34 @@
 
 static char *field_color(t_iobuf *iob, char *ptr)
 {
-	if (*ptr == 'r') {
-		iob->field.color = true;
+	char *tmp;
+
+	tmp = iob->data;
+	if (*ptr == 'r')
 		iob_write(iob, "\33[0;31m", 8);
-	}
-	else if (*ptr == 'g') {
-		iob->field.color = true;
+	else if (*ptr == 'R')
+		iob_write(iob, "\33[1;31m", 8);
+	else if (*ptr == 'g')
 		iob_write(iob, "\33[0;32m", 8);
-	}
-	else if (*ptr == 'y') {
-		iob->field.color = true;
+	else if (*ptr == 'G')
+		iob_write(iob, "\33[1;31m", 8);
+	else if (*ptr == 'y')
 		iob_write(iob, "\33[0;33m", 8);
-	}
-	else if (*ptr == 'b') {
-		iob->field.color = true;
+	else if (*ptr == 'Y')
+		iob_write(iob, "\33[1;33m", 8);
+	else if (*ptr == 'b')
 		iob_write(iob, "\33[0;34m", 8);
-	}
-	else if (*ptr == 'm') {
-		iob->field.color = true;
-		iob_write(iob, "\33[0;35m", 8);
-	}
-	else if (*ptr == 'c') {
-		iob->field.color = true;
+	else if (*ptr == 'B')
+		iob_write(iob, "\33[1;34m", 8);
+	else if (*ptr == 'c')
 		iob_write(iob, "\33[0;36m", 8);
-	}
-	else if (*ptr == 'w') {
+	else if (*ptr == 'C')
+		iob_write(iob, "\33[1;36m", 8);
+	if (tmp != iob->data)
+	{
 		iob->field.color = true;
-		iob_write(iob, "\33[0;37m", 8);
-	}
-	if (iob->field.color)
 		ptr++;
+	}
 	return (ptr);
 }
 
@@ -56,9 +54,9 @@ static char *format_field(t_iobuf *iob, char *ptr, va_list *ap)
 	char	*tmp;
 	int		ok;
 
-	ok = 0;
 	tmp = field_color(iob, ptr);
 	tmp = str_to_uint(tmp, (int *)&iob->field.width);
+	ok = 0;
 	if (!tmp)
 		return (ptr);
 	if (*tmp == 'd' && ++tmp && ++ok)

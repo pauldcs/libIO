@@ -5,14 +5,14 @@ SRCS_DIR	:= srcs
 OBJS_DIR	:= .objs
 INCS_DIR	:= incs
 
-IOBUF_SIZE  := 1024
+IOBUF_MAX  := 1024
 
 SRCS :=                   \
 	stringf.c             \
 	fstringf.c            \
 	sstringf.c            \
 	snstringf.c           \
-	cnstringf.c           \
+	astringf.c            \
 	\
 	format/__int.c        \
 	format/__str.c        \

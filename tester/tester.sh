@@ -45,7 +45,7 @@ printf "Compiling tests ...  "
 for i in tester/infiles/*.c; do
 	name=$i
 	loading
-    gcc $name -o ${name::-2} -I incs -L. -lstringf
+    gcc -g3 -fsanitize=address $name -o ${name::-2} -I incs -L. -lstringf
 done
 
 loading_done

@@ -58,26 +58,118 @@ test_list = \
 	]              
 ]
 
+
 #stringf
 for test in test_list:
-	infile_name = "tester/infiles/" + "stringf" + "_" \
-			+ str(test_list.index(test)).zfill(3)     \
+	infile_name = "tester/infiles/stringf_"       \
+			+ str(test_list.index(test)).zfill(3) \
 			+ "_test.c"
 	with open(infile_name, 'w') as infile:
-		infile.write(
-	"""
-		#include "libstringf.h"
-		#include <limits.h>
-		#include <stdlib.h>
-		int main(void){
-			char *buf;
-			int ret = cnstringf(&buf, """+test[0]+""");
-			fstringf(1, "%s(%d)", buf, ret);
-			return (free(buf), 0);
-		}
-	""")
-	outfile_name = "tester/infiles/" + "stringf" + "_" \
-		+ str(test_list.index(test)).zfill(3)          \
+		infile.write("""
+#include "libstringf.h"
+#include <limits.h>
+int main(void){
+	fstringf(1, "(%d)", stringf("""+test[0]+"""));
+	return (0);
+}
+""")
+	outfile_name = "tester/infiles/stringf_"  \
+		+ str(test_list.index(test)).zfill(3) \
+		+ "_test.out"
+	with open(outfile_name, 'w') as outfile:
+		outfile.write(test[1])
+
+
+#fstringf
+for test in test_list:
+	infile_name = "tester/infiles/fstringf_"      \
+			+ str(test_list.index(test)).zfill(3) \
+			+ "_test.c"
+	with open(infile_name, 'w') as infile:
+		infile.write("""
+#include "libstringf.h"
+#include <limits.h>
+int main(void)
+{
+	fstringf(1, "(%d)", fstringf(1, """+test[0]+"""));
+	return (0);
+}
+""")
+	outfile_name = "tester/infiles/fstringf_" \
+		+ str(test_list.index(test)).zfill(3) \
+		+ "_test.out"
+	with open(outfile_name, 'w') as outfile:
+		outfile.write(test[1])
+
+
+#sstringf
+for test in test_list:
+	infile_name = "tester/infiles/sstringf_"  \
+		+ str(test_list.index(test)).zfill(3) \
+		+ "_test.c"
+	with open(infile_name, 'w') as infile:
+		infile.write("""
+#include "libstringf.h"
+#include <limits.h>
+int main(void)
+{
+	char buf[100];
+	int ret = sstringf(buf, """+test[0]+""");
+	fstringf(1, "%s(%d)", buf, ret);
+return (0);
+}
+""")
+	outfile_name = "tester/infiles/sstringf_" \
+		+ str(test_list.index(test)).zfill(3) \
+		+ "_test.out"
+	with open(outfile_name, 'w') as outfile:
+		outfile.write(test[1])
+
+
+#snstringf
+for test in test_list:
+	infile_name = "tester/infiles/snstringf_"     \
+			+ str(test_list.index(test)).zfill(3) \
+			+ "_test.c"
+	with open(infile_name, 'w') as infile:
+		infile.write("""
+#include "libstringf.h"
+#include <limits.h>
+int main(void)
+{
+	char buf[100];
+	int ret = snstringf(buf, 10, """+test[0]+""");
+	fstringf(1, "%s(%d)", buf, ret);
+	return (0);
+}
+""")
+	outfile_name = "tester/infiles/snstringf_"  \
+		+ str(test_list.index(test)).zfill(3)   \
+		+ "_test.out"
+	with open(outfile_name, 'w') as outfile:
+		outfile.write(test[1])
+
+
+#astringf
+for test in test_list:
+	infile_name = "tester/infiles/astringf_"      \
+			+ str(test_list.index(test)).zfill(3) \
+			+ "_test.c"
+	with open(infile_name, 'w') as infile:
+		infile.write("""
+#include "libstringf.h"
+#include <limits.h>
+#include <stdlib.h>
+int main(void)
+{
+	char *buf;
+	int ret = astringf(&buf, """+test[0]+""");
+	fstringf(1, "%s(%d)", buf, ret);
+	return (free(buf), 0);
+}
+""")
+	outfile_name = "tester/infiles/astringf_" \
+		+ str(test_list.index(test)).zfill(3) \
 		+ "_test.out"
 	with open(outfile_name, 'w') as outfile:
 		outfile.write(test[1])

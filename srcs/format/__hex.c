@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:39 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/01 23:31:36 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 02:15:30 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-void	__hex(t_iobuf *iob, uint32_t n)
+void	__hex(t_iobuf *iob, const uint32_t n)
 {
 	uint64_t	tmp;
 	char		bytes[16];

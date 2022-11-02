@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cnstringf.c                                        :+:      :+:    :+:   */
+/*   astringf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:47 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 00:20:42 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 02:14:03 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-size_t	cnstringf(char **ptr, const char *format, ...)
+ssize_t	astringf(char **dst, const char *format, ...)
 {
-	static char	buf[IOBUF_SIZE];
+	static char	buf[IOBUF_MAX];
 	va_list	ap;
 	t_iobuf	iob;
 
@@ -28,11 +28,12 @@ size_t	cnstringf(char **ptr, const char *format, ...)
 	va_start(ap, format);
 	iob_format_str(&iob, format, &ap);
 	va_end(ap);
-	*ptr = malloc(iob.len + 1);
-	if (*ptr)
+	*dst = malloc(iob.len + 1);
+	if (*dst)
 	{
-		memcpy(*ptr, iob.data, iob.len);
-		(*ptr)[iob.len] = '\0';
+		memcpy(*dst, iob.data, iob.len);
+		(*dst)[iob.len] = '\0';
+		return (iob.len);
 	}
-	return (iob.len);
+	return (-1);
 }

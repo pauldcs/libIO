@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:45 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/01 23:21:52 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 02:15:38 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include <string.h>
 
-void	__str(t_iobuf *iob, char *s)
+void	__str(t_iobuf *iob, const char *s)
 {
 	if (s)
 	{

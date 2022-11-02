@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:49 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 00:20:38 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 02:14:03 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 size_t	fstringf(int fd, const char *format, ...)
 {
-	static char	buf[IOBUF_SIZE];
+	static char	buf[IOBUF_MAX];
 	va_list		ap;
 	t_iobuf		iob;
 
