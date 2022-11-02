@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:47 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 13:37:05 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 19:28:36 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 ssize_t	ssavef(char **dst, const char *format, ...)
 {
 	static char	buf[IOBUF_MAX];
-	va_list	ap;
-	t_iobuf	iob;
+	va_list		ap;
+	t_iobuf		iob;
 
 	mem_set(&iob, '\0', sizeof(t_iobuf));
 	iob.data = buf;

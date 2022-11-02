@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:10 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 12:50:20 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 19:29:21 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-static char *field_color(t_iobuf *iob, char *ptr)
+static char	*field_color(t_iobuf *iob, char *ptr)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = iob->data;
 	if (*ptr == 'r')
@@ -37,10 +37,6 @@ static char *field_color(t_iobuf *iob, char *ptr)
 		iob_write(iob, "\33[0;34m", 8);
 	else if (*ptr == 'B')
 		iob_write(iob, "\33[1;34m", 8);
-	else if (*ptr == 'c')
-		iob_write(iob, "\33[0;36m", 8);
-	else if (*ptr == 'C')
-		iob_write(iob, "\33[1;36m", 8);
 	if (tmp != iob->data)
 	{
 		iob->field.color = true;
@@ -49,18 +45,18 @@ static char *field_color(t_iobuf *iob, char *ptr)
 	return (ptr);
 }
 
-static char *format_field(t_iobuf *iob, char *ptr, va_list *ap)
+static char	*format_field(t_iobuf *iob, char *ptr, va_list *ap)
 {
 	char	*tmp;
 	int		ok;
 
+	ok = 0;
 	tmp = field_color(iob, ptr);
 	tmp = str_to_uint(tmp, (int *)&iob->field.width);
-	ok = 0;
 	if (!tmp)
 		return (ptr);
 	if (*tmp == 'd' && ++tmp && ++ok)
-		__int(iob, va_arg(* ap, int32_t));
+		__int(iob, va_arg(*ap, int32_t));
 	else if (*tmp == 's' && ++tmp && ++ok)
 		__str(iob, va_arg(*ap, char *));
 	else if (*tmp == 'x' && ++tmp && ++ok)

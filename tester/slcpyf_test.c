@@ -2,6 +2,9 @@
 #include <string.h>
 #include <stdio.h>
 
+// build: 
+//        (cd .. && make) && gcc slcpyf_test.c -L../ -lstringf -I ../incs -o test && ./test && rm test
+
 int main(void)
 {
 	char *src1;
@@ -15,7 +18,7 @@ int main(void)
 	src1 = "coucou";
 	src2 = "coucou";
 
-	printf ("test 1:\n");
+	printf ("\ntest 1:\n");
 	memset(dst1, 'A', 10);
 	memset(dst2, 'A', 10);
 	ret1 = strlcpy(dst1 + 1, src1, 0);
@@ -23,7 +26,7 @@ int main(void)
 	printf (" - %d : %d\n", ret1, ret2);
 	printf (" - %c : %c\n", *dst1, *dst2);
 	
-	printf ("test 2:\n");
+	printf ("\ntest 2:\n");
 	memset(dst1, 'A', 10);
 	memset(dst2, 'A', 10);
 	ret1 = strlcpy(dst1, src1, 1);
@@ -31,7 +34,7 @@ int main(void)
 	printf (" - %d : %d\n", ret1, ret2);
 	printf (" - %x %c : %x %c\n", dst1[0], dst1[1], dst2[0], dst2[1]);
 
-	printf ("test 3:\n");
+	printf ("\ntest 3:\n");
 	memset(dst1, 'A', 10);
 	memset(dst2, 'A', 10);
 	ret1 = strlcpy(dst1, src1, 2);
@@ -39,7 +42,7 @@ int main(void)
 	printf (" - %d : %d\n", ret1, ret2);
 	printf (" - %c %x %c: %c %x %c\n", dst1[0], dst1[1], dst1[2], dst2[0], dst2[1], dst2[2]);
 
-	printf ("test 4:\n");
+	printf ("\ntest 4:\n");
 	memset(dst1, 'A', 10);
 	memset(dst2, 'A', 10);
 	ret1 = strlcpy(dst1, src1, 6);
@@ -48,7 +51,7 @@ int main(void)
 	printf (" - %d : %d\n", memcmp(src1, dst1, 5), memcmp(src2, dst2, 5));
 	printf (" - %x %c : %x %c\n", dst1[5], dst1[1], dst2[5], dst2[1]);
 
-	printf ("test 5:\n");
+	printf ("\ntest 5:\n");
 	memset(dst1, 'A', 10);
 	memset(dst2, 'A', 10);
 	ret1 = strlcpy(dst1, src1, 7);
@@ -56,7 +59,7 @@ int main(void)
 	printf (" - %d : %d\n", ret1, ret2);
 	printf (" - %d : %d\n", memcmp(src1, dst1, 7), memcmp(src2, dst2, 7));
 
-	printf ("test 6:\n");
+	printf ("\ntest 6:\n");
 	memset(dst1, 'A', 10);
 	memset(dst2, 'A', 10);
 	ret1 = strlcpy(dst1, src1, 8);
@@ -64,7 +67,7 @@ int main(void)
 	printf (" - %d : %d\n", ret1, ret2);
 	printf (" - %d : %d\n", memcmp(src1, dst1, 7), memcmp(src2, dst2, 7));
 
-	printf ("test 7:\n");
+	printf ("\ntest 7:\n");
 	memset(dst1, 0, 10);
 	memset(dst2, 0, 10);
 	ret1 = strlcpy(dst1, "1", 0);

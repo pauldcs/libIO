@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stringf.c                                          :+:      :+:    :+:   */
+/*   putstr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:56 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 11:05:35 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 19:28:18 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	putstr(const char *format, ...)
 	iob_format_str(&iob, format, &ap);
 	va_end(ap);
 	return (write_all(
-		STDOUT_FILENO,
-		iob.data,
-		iob.len));
+			STDOUT_FILENO,
+			iob.data,
+			iob.len));
 }

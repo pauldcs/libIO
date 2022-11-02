@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 14:24:32 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 19:23:28 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@ typedef struct s_iobuf {
 /* writes output to stdout */
 size_t	putstr(const char *format, ...);
 
-/* writes output to fd */
+/* writes output to file descriptor */
 size_t	fputstr(int fd, const char *format, ...);
 
 /**
  * @brief copies a maximum of 'dstsize' bytes of 'format' into 'dst'.
  * The result will be truncated if the format string is larger than
- * IOBUF_MAX or 'n'. the result is not null terminated.
+ * IOBUF_MAX or 'dstsize'. the result is not null terminated.
+ * 
+ * cpyf() is used to write formatted output in the middle of a buffer.
+ * 
  * @param dst The destination buffer
  * @param dstsize size of 'dst'
  * @param format The format string
@@ -52,9 +55,9 @@ size_t	fputstr(int fd, const char *format, ...);
 size_t	cpyf(void *dst, size_t dstsize, const char *format, ...);
 
 /**
- * @brief copies the 'format' into 'str'.
+ * @brief copies 'format' into 'str'.
  * The result will be truncated if the format string is larger than
- * IOBUF_MAX. The result is always null terminated.
+ * IOBUF_MAX. The behavior is undefined if str is null.
  * 
  * @param str The destination string
  * @param format The format string
@@ -64,21 +67,21 @@ size_t	cpyf(void *dst, size_t dstsize, const char *format, ...);
 size_t	scpyf(char *str, const char *format, ...);
 
 /**
- * @brief This function behaves as strlcpy, the src being the format
- * string.
+ * @brief Behaves as strlcpy, the src being the format
+ * string. Null termination is guaranteed unless dstsize is 0.
  * 
  * @param dst the destination buffer
  * @param dstsize the size of 'dst'
  * @param format the format string
  * @param ... 
- * @return same as strlcpy
+ * @return identical to strlcpy
  */
 size_t	slcpyf(char *dst, size_t dstsize, const char *format, ...);
 
 /**
- * @brief copies the format string into a new allocated buffer placed into 'dst'.
+ * @brief copies the format string into a new allocated space placed into 'dst'
  * If the allocation fails, 'buf' is null and the return value is -1.
- * In any other case, 'buf' is guaranteed to be null terminated.
+ * In any other case 'buf' is guaranteed to be null terminated.
  * The result will be truncated if the format string is larger than
  * IOBUF_MAX.
  * @param dst pointer to the destination buffer
@@ -94,7 +97,6 @@ void	__hex(t_iobuf *iob, const uint32_t n);
 void	__ptr(t_iobuf *iob, const uint64_t *p);
 
 void	iob_format_str(t_iobuf *iob, const char *format, va_list *ap);
-
 void	iob_write(t_iobuf *iob, const char *src, size_t n);
 void	field_pad(t_iobuf *iob, size_t size);
 size_t	write_all(int fd, const void *buf, size_t s);

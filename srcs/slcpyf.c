@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:52 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 13:33:37 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 19:27:22 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	slcpyf(char *dst, size_t dstsize, const char *format, ...)
 	va_end(ap);
 	if (dstsize)
 		*(char *)(iob.data
-			+ iob.len 
+			+ iob.len
 			- (iob.len == dstsize)) = '\0';
 	return (iob.len + iob.disc);
 }
