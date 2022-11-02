@@ -8,11 +8,11 @@ INCS_DIR	:= incs
 IOBUF_MAX  := 1024
 
 SRCS :=                   \
-	stringf.c             \
-	fstringf.c            \
-	sstringf.c            \
-	snstringf.c           \
-	astringf.c            \
+	putstr.c              \
+	fputstr.c             \
+	scpyf.c               \
+	slcpyf.c              \
+	ssavef.c              \
 	\
 	format/__int.c        \
 	format/__str.c        \
@@ -24,4 +24,6 @@ SRCS :=                   \
 	utils/write_all.c      \
 	utils/iob_format_str.c \
 	utils/str_to_uint.c    \
+	utils/mem_copy.c       \
+	utils/mem_set.c        \
 

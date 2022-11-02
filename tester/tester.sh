@@ -7,18 +7,6 @@ VALGRIND=true
 OK="\033[0;32mOK\033[0m\n"
 KO="\033[1;31mKO\033[0m\n"
 
-sp="/-\|"
-sc=0
-loading()
-{
-   printf "\b${sp:sc++:1}"
-   ((sc==${#sp})) && sc=0
-}
-
-loading_done()
-{
-   printf "\b[\033[0;32mDone\033[0m]\n"
-}
 
 if [[ $(uname) == 'Linux' ]];
 	then
@@ -41,14 +29,19 @@ fi
 mkdir -vp tester/infiles
 python3 tester/gen.py
 
+
+sp="/-\|"
+sc=0
+
 printf "Compiling tests ...  "
 for i in tester/infiles/*.c; do
 	name=$i
-	loading
-    gcc -g3 -fsanitize=address $name -o ${name::-2} -I incs -L. -lstringf
+    printf "\b${sp:sc++:1}"
+    ((sc==${#sp})) && sc=0
+    gcc -g3 $name -o ${name::-2} -I incs -L. -lstringf
 done
+printf "\b[\033[0;32mDone\033[0m]\n"
 
-loading_done
 echo "Running tests..."
 mkdir -vp $OUTDIR > /dev/null
 for infile in $INFILES;
@@ -90,6 +83,7 @@ for infile in $INFILES;
 			then
 				printf "\033[1;31mMEMORY ERROR\033[0m\n"
 				cat $log_valg
+				echo ""
 		fi
 done
 rm -rf $OUTDIR

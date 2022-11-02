@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sstringf.c                                         :+:      :+:    :+:   */
+/*   fcpy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 21:07:54 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 02:14:03 by pducos           ###   ########.fr       */
+/*   Created: 2022/10/30 21:07:49 by pducos            #+#    #+#             */
+/*   Updated: 2022/11/02 11:34:48 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <string.h>
 
-size_t	sstringf(char *str, const char *format, ...)
+size_t	cpyf(void *dst, size_t n, const char *format, ...)
 {
 	va_list	ap;
 	t_iobuf	iob;
 
-	memset(&iob, '\0', sizeof(t_iobuf));
-	iob.data = str;
-	iob.cap = IOBUF_MAX - 1;
+	mem_set(&iob, '\0', sizeof(t_iobuf));
+	iob.data = dst;
+	iob.cap = n;
 	va_start(ap, format);
 	iob_format_str(&iob, format, &ap);
 	va_end(ap);
-	*(char *)(iob.data + iob.len) = '\0';
-	return (iob.len);
+	return (iob.len + iob.disc);
 }
