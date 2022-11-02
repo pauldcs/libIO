@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 13:41:17 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/02 14:24:32 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ size_t	putstr(const char *format, ...);
 size_t	fputstr(int fd, const char *format, ...);
 
 /**
- * @brief copies a maximum of 'n' bytes of 'format' into 'dst'.
+ * @brief copies a maximum of 'dstsize' bytes of 'format' into 'dst'.
  * The result will be truncated if the format string is larger than
  * IOBUF_MAX or 'n'. the result is not null terminated.
  * @param dst The destination buffer
