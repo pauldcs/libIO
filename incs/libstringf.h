@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 19:23:28 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/13 12:56:44 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ void	__ptr(t_iobuf *iob, const uint64_t *p);
 void	iob_format_str(t_iobuf *iob, const char *format, va_list *ap);
 void	iob_write(t_iobuf *iob, const char *src, size_t n);
 void	field_pad(t_iobuf *iob, size_t size);
-size_t	write_all(int fd, const void *buf, size_t s);
-char	*str_to_uint(char *str, int *result);
-void	mem_copy(void *dst, const void *src, size_t len);
-void	mem_set(void *p, char byte, size_t n);
+char	*lf_str_to_uint(char *str, int *result);
+size_t	lf_write_all(int fd, const void *buf, size_t s);
+void	lf_mem_copy(void *dst, const void *src, size_t len);
+void	lf_mem_set(void *p, char byte, size_t n);
 
 #endif

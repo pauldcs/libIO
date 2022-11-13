@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:07:49 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/02 13:41:34 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/13 12:55:13 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	cpyf(void *dst, size_t dstsize, const char *format, ...)
 	va_list	ap;
 	t_iobuf	iob;
 
-	mem_set(&iob, '\0', sizeof(t_iobuf));
+	lf_mem_set(&iob, '\0', sizeof(t_iobuf));
 	iob.data = dst;
 	iob.cap = dstsize;
 	va_start(ap, format);
