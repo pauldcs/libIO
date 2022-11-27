@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:10 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/27 15:42:43 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/27 23:23:22 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,26 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
-static char *field_color(t_iobuf *iob, char *ptr)
+
+static char	*field_color(t_iobuf *iob, char *ptr)
 {
-	if (*ptr == 'r') {
+	if (*ptr == 'r')
+	{
 		iob->field.color = true;
 		iob_write(iob, "\33[0;31m", 8);
 	}
-	else if (*ptr == 'g') {
+	else if (*ptr == 'g')
+	{
 		iob->field.color = true;
 		iob_write(iob, "\33[0;32m", 8);
 	}
-	else if (*ptr == 'y') {
+	else if (*ptr == 'y')
+	{
 		iob->field.color = true;
 		iob_write(iob, "\33[0;33m", 8);
 	}
-	else if (*ptr == 'b') {
+	else if (*ptr == 'b')
+	{
 		iob->field.color = true;
 		iob_write(iob, "\33[0;34m", 8);
 	}

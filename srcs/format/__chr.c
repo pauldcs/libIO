@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 15:14:14 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/27 15:39:36 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/27 23:23:45 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	__chr(t_iobuf *iob, const int c)
 {
-	char buf[3];
-	
+	char	buf[3];
+
 	if (c >= 32 && c <= 126)
 		iob_write(iob, (char *)&c, 1);
 	else
