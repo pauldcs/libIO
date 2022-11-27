@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:08:10 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/13 12:56:44 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/27 15:42:43 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,6 @@ static char *field_color(t_iobuf *iob, char *ptr)
 		iob->field.color = true;
 		iob_write(iob, "\33[0;34m", 8);
 	}
-	else if (*ptr == 'm') {
-		iob->field.color = true;
-		iob_write(iob, "\33[0;35m", 8);
-	}
-	else if (*ptr == 'c') {
-		iob->field.color = true;
-		iob_write(iob, "\33[0;36m", 8);
-	}
-	else if (*ptr == 'w') {
-		iob->field.color = true;
-		iob_write(iob, "\33[0;37m", 8);
-	}
 	if (iob->field.color)
 		ptr++;
 	return (ptr);
@@ -60,10 +48,12 @@ static char	*format_field(t_iobuf *iob, char *ptr, va_list *ap)
 	tmp = lf_str_to_uint(tmp, (int *)&iob->field.width);
 	if (!tmp)
 		return (ptr);
-	if (*tmp == 'd' && ++tmp && ++ok)
+	else if (*tmp == 'd' && ++tmp && ++ok)
 		__int(iob, va_arg(*ap, int32_t));
 	else if (*tmp == 's' && ++tmp && ++ok)
 		__str(iob, va_arg(*ap, char *));
+	else if (*tmp == 'c' && ++tmp && ++ok)
+		__chr(iob, va_arg(*ap, int));
 	else if (*tmp == 'x' && ++tmp && ++ok)
 		__hex(iob, va_arg(*ap, uint32_t));
 	else if (*tmp == 'p' && ++tmp && ++ok)

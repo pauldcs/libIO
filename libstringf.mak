@@ -16,6 +16,7 @@ SRCS :=                      \
 	ssavef.c                 \
 	\
 	format/__int.c           \
+	format/__chr.c           \
 	format/__str.c           \
 	format/__hex.c           \
 	format/__ptr.c           \

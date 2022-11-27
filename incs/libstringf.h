@@ -6,7 +6,7 @@
 /*   By: pducos <pducos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:50:00 by pducos            #+#    #+#             */
-/*   Updated: 2022/11/13 12:56:44 by pducos           ###   ########.fr       */
+/*   Updated: 2022/11/27 15:27:42 by pducos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ ssize_t	ssavef(char **dst, const char *format, ...);
 
 void	__int(t_iobuf *iob, const int32_t c);
 void	__str(t_iobuf *iob, const char *s);
+void	__chr(t_iobuf *iob, const int c);
 void	__hex(t_iobuf *iob, const uint32_t n);
 void	__ptr(t_iobuf *iob, const uint64_t *p);
 
